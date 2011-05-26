@@ -54,9 +54,10 @@ regular paragraph</p>.
 </p>
 ```
 
-That's all.
+Other notes:
 
-Also, I'll be using UTF-8 on my tests. I can't guarantee it will handle other encodings properly.
+* I'll be using UTF-8 on my tests. I can't guarantee it will handle other encodings properly.
+* Line separators *must be* '\n'. Other line separators (specially if you use '\r' only) might give give you nasty surprises.
 
 Tests
 -----
