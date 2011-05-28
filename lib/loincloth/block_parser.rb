@@ -7,13 +7,13 @@ module Loincloth
       buffer = []
       @io.each{ |line|
         if is_block_separator(line)
-          call_action(action, buffer)
+          do_action(action, buffer)
           buffer = []
         else
           buffer << line.chomp
         end
       }
-      call_action(action, buffer)
+      do_action(action, buffer)
     end
     
     private
@@ -22,7 +22,7 @@ module Loincloth
       line =~ /\A\n+\z/
     end
     
-    def call_action(action, buffer)
+    def do_action(action, buffer)
       action.call(buffer.join("\n")) unless buffer.empty?
     end
     

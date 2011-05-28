@@ -13,10 +13,6 @@ module Test
           test_text("first\nsecond\nthird", ["first", "second", "third"])
         end
         
-        def should_separate_by_n
-          test_text("first\rsecond\rthird",  ["first", "second", "third"])
-        end
-        
         private
         
         def test_text(text, lines)
