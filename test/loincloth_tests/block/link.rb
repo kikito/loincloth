@@ -4,6 +4,11 @@ module Test
   module LoinclothTests
     module Block
       class Link < Assertor::Case
+      
+        def should_leave_regular_text_untouched
+          should_convert "hello", "hello"
+        end
+      
         def should_convert_regular_links
           should_convert "[link to google](http://www.google.com)", "<a href=\"http://www.google.com\" title=\"link to google\">link to google</a>"
         end

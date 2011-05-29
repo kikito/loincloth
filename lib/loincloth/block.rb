@@ -39,6 +39,7 @@ module Loincloth
       gsub! LINK do |s|
         "<a href=\"#{$2}\" title=\"#{$1}\">#{$1}</a>"
       end
+      self
     end
     
     private
