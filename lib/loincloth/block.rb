@@ -5,6 +5,7 @@ module Loincloth
     H1_BLOCK = /\A(.+)\n=+\z/m
     H2_BLOCK = /\A(.+)\n-+\z/m
     LIST_BLOCK = /\A\* (.+)\z/m
+    HTML_LI_SEPARATOR = "</li>\n  <li>"
   
     def is_h1?
       h1_text
@@ -29,7 +30,7 @@ module Loincloth
     end
     
     def to_list
-      replace "<ul>#{list_items_text}</ul>" if is_list?
+      replace "<ul>\n#{list_items_text}\n</ul>" if is_list?
       self
     end
     
@@ -48,7 +49,7 @@ module Loincloth
     end
     
     def list_items_text
-      "<li>#{list_items.join '</li><li>'}</li>"
+      "  <li>#{list_items.join HTML_LI_SEPARATOR}</li>"
     end
     
     def list_items
