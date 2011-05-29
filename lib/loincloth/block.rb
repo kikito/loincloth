@@ -6,6 +6,7 @@ module Loincloth
     H2_BLOCK = /\A(.+)\n-+\z/m
     LIST_BLOCK = /\A\* (.+)\z/m
     HTML_LI_SEPARATOR = "</li>\n  <li>"
+    LINK = /\[(.*?)\]\((.*?)\)/m
   
     def is_h1?
       h1_text
@@ -32,6 +33,12 @@ module Loincloth
     def to_list
       replace "<ul>\n#{list_items_text}\n</ul>" if is_list?
       self
+    end
+    
+    def link
+      gsub! LINK do |s|
+        "<a href=\"#{$2}\" title=\"#{$1}\">#{$1}</a>"
+      end
     end
     
     private
