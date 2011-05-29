@@ -4,7 +4,7 @@ module Loincloth
   
     H1_BLOCK = /\A(.+)\n=+\z/m
     H2_BLOCK = /\A(.+)\n-+\z/m
-    LIST_BLOCK = /\A\* (.)+\z/m
+    LIST_BLOCK = /\A\* (.+)\z/m
   
     def is_h1?
       h1_text
@@ -19,12 +19,17 @@ module Loincloth
     end
     
     def to_h1
-      return Block.new("<h1>#{h1_text}</h1>") if is_h1?
+      replace "<h1>#{h1_text}</h1>" if is_h1?
       self
     end
     
     def to_h2
-      return Block.new("<h2>#{h1_text}</h2>") if is_h2?
+      replace "<h2>#{h2_text}</h2>" if is_h2?
+      self
+    end
+    
+    def to_list
+      replace "<ul>#{list_items_text}</ul>" if is_list?
       self
     end
     
@@ -40,6 +45,14 @@ module Loincloth
     
     def list_text
       @list_text ||= self[LIST_BLOCK, 1]
+    end
+    
+    def list_items_text
+      "<li>#{list_items.join '</li><li>'}</li>"
+    end
+    
+    def list_items
+      list_text.split(/\n\* /)
     end
   
   end
