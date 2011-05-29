@@ -9,33 +9,33 @@ module Test
       
         BLOCKS = ['first', 'second', 'third']
         
-        def should_work_with_empty_strings
-          test_text "", []
+        def should_return_empty_array_with_empty_string
+          should_split "", []
         end
         
-        def should_work_with_line_separators_only
-          test_text "\n", []
+        def should_return_empty_array_with_newline_string
+          should_split "\n", []
         end
 
         def should_separate_by_nn
-          test_text BLOCKS.join "\n\n"
+          should_split BLOCKS.join "\n\n"
         end
 
         def should_separate_by_nnn
-          test_text BLOCKS.join "\n\n\n"
+          should_split BLOCKS.join "\n\n\n"
         end
         
         def should_not_separate_by_n
-          test_text BLOCKS.join("\n"), ["first\nsecond\nthird"]
+          should_split BLOCKS.join("\n"), ["first\nsecond\nthird"]
         end
         
         def should_separate_appropiately
-          test_text "first\nsecond\n\nthird", ["first\nsecond", "third"]
+          should_split "first\nsecond\n\nthird", ["first\nsecond", "third"]
         end
 
         private
         
-        def test_text(text, target=BLOCKS)
+        def should_split(text, target=BLOCKS)
           parser = Loincloth::BlockParser.new(StringIO.new(text))
           blocks = []
           parser.each_block{|block| blocks << block }

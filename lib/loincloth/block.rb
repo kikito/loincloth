@@ -4,17 +4,18 @@ module Loincloth
   
     H1_BLOCK = /\A(.+)\n=+\z/m
     H2_BLOCK = /\A(.+)\n-+\z/m
+    LIST_BLOCK = /\A\* (.)+\z/m
   
-    def lines
-      @lines ||= split("\n")
-    end
-    
     def is_h1?
       h1_text
     end
     
     def is_h2?
       h2_text
+    end
+    
+    def is_list?
+      list_text
     end
     
     def to_h1
@@ -35,6 +36,10 @@ module Loincloth
     
     def h2_text
       @h2_text ||= self[H2_BLOCK, 1]
+    end
+    
+    def list_text
+      @list_text ||= self[LIST_BLOCK, 1]
     end
   
   end
