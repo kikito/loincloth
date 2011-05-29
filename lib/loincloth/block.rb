@@ -5,8 +5,11 @@ module Loincloth
     H1_BLOCK = /\A(.+)\n=+\z/m
     H2_BLOCK = /\A(.+)\n-+\z/m
     LIST_BLOCK = /\A\* (.+)\z/m
+    LI_SEPARATOR = /\n\* /
     HTML_LI_SEPARATOR = "</li>\n  <li>"
     LINK = /\[(.*?)\]\((.*?)\)/m
+    EMPHASIS = /\*(.+?)\*/m
+    STRONG = /\*\*(.+?)\*\*/m
   
     def is_h1?
       h1_text
@@ -42,6 +45,21 @@ module Loincloth
       self
     end
     
+    def emphasize
+      gsub! EMPHASIS do |s|
+        "<em>#{$1}</em>"
+      end
+      self
+    end
+    
+    def strongize
+      gsub! STRONG do |s|
+        "<strong>#{$1}</strong>"
+      end
+      self
+    end
+    
+    
     private
     
     def h1_text
@@ -61,7 +79,7 @@ module Loincloth
     end
     
     def list_items
-      list_text.split(/\n\* /)
+      list_text.split LI_SEPARATOR
     end
   
   end
