@@ -8,6 +8,7 @@ module Loincloth
     LI_SEPARATOR = /\n\* /
     HTML_LI_SEPARATOR = "</li>\n  <li>"
     LINK = /\[(.*?)\]\((.*?)\)/m
+    IMAGE = /!\[(.*?)\]\((.*?)\)/m
     EMPHASIS = /\*(.+?)\*/m
     STRONG = /\*\*(.+?)\*\*/m
   
@@ -41,6 +42,13 @@ module Loincloth
     def link
       gsub! LINK do |s|
         "<a href=\"#{$2}\" title=\"#{$1}\">#{$1}</a>"
+      end
+      self
+    end
+    
+    def imaginize
+      gsub! IMAGE do |s|
+        "<img src=\"#{$2}\" alt=\"#{$1}\" title=\"#{$1}\" />"
       end
       self
     end
