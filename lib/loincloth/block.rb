@@ -11,19 +11,18 @@ module Loincloth
     IMAGE = /!\[(.*?)\]\((.*?)\)/m
     EMPHASIS = /\*(.+?)\*/m
     STRONG = /\*\*(.+?)\*\*/m
-  
-    def is_h1?
-      h1_text
+
+    def process
+      to_h1
+      to_h2
+      to_list
+      to_paragraph
+      strongize
+      emphasize
+      imaginize
+      link
     end
-    
-    def is_h2?
-      h2_text
-    end
-    
-    def is_list?
-      list_text
-    end
-    
+
     def to_h1
       replace "<h1>#{h1_text}</h1>" if is_h1?
       self
@@ -36,6 +35,11 @@ module Loincloth
     
     def to_list
       replace "<ul>\n#{list_items_text}\n</ul>" if is_list?
+      self
+    end
+
+    def to_paragraph
+      replace "<p>#{self}</p>" if is_paragraph?
       self
     end
     
@@ -66,8 +70,23 @@ module Loincloth
       end
       self
     end
+
+    def is_h1?
+      h1_text
+    end
     
+    def is_h2?
+      h2_text
+    end
     
+    def is_list?
+      list_text
+    end
+
+    def is_paragraph?
+      !is_h1? && !is_h2? && !is_list?
+    end
+
     private
     
     def h1_text
