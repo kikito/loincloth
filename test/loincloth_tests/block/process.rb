@@ -32,7 +32,7 @@ module Test
 
         def should_convert(source, expectation)
           block = Loincloth::Block.new source
-          assert_equals(block.process, expectation)
+          block.process
           assert_equals(block, expectation)
         end
 

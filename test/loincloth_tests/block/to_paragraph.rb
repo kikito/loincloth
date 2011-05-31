@@ -21,7 +21,7 @@ module Test
         
         def should_convert(source, expectation)
           block = Loincloth::Block.new source
-          assert_equals(block.to_paragraph, expectation)
+          block.to_paragraph
           assert_equals(block, expectation)
         end
 

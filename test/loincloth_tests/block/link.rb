@@ -25,7 +25,7 @@ module Test
         
         def should_convert(source, expectation)
           block = Loincloth::Block.new source
-          assert_equals(block.link, expectation)
+          block.link
           assert_equals(block, expectation)
         end
 
