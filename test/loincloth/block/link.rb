@@ -1,7 +1,7 @@
 require 'helper'
 
 module Test
-  module LoinclothTests
+  module Loincloth
     module Block
       class Link < Assertor::Case
       
@@ -24,7 +24,7 @@ module Test
         private
         
         def should_convert(source, expectation)
-          block = Loincloth::Block.new source
+          block = ::Loincloth::Block.new source
           block.link
           assert_equals(block, expectation)
         end

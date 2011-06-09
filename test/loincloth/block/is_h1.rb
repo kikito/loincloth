@@ -1,7 +1,7 @@
 require 'helper'
 
 module Test
-  module LoinclothTests
+  module Loincloth
     module Block
       class IsH1 < Assertor::Case
         def should_return_true_if_last_line_is_made_out_of_3_equal_signs
@@ -27,12 +27,12 @@ module Test
         private
         
         def should_return_true_on(text)
-          block = Loincloth::Block.new text
+          block = ::Loincloth::Block.new text
           assert(block.is_h1?)
         end
         
         def should_return_false_on(text)
-          block = Loincloth::Block.new text
+          block = ::Loincloth::Block.new text
           assert_not(block.is_h1?)
         end
       end

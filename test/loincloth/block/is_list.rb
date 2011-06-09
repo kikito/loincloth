@@ -1,7 +1,7 @@
 require 'helper'
 
 module Test
-  module LoinclothTests
+  module Loincloth
     module Block
       class IsParagraph < Assertor::Case
         def should_return_true_on_regular_text
@@ -23,12 +23,12 @@ module Test
         private
         
         def should_return_true_on(text)
-          block = Loincloth::Block.new text
+          block = ::Loincloth::Block.new text
           assert(block.is_paragraph?)
         end
         
         def should_return_false_on(text)
-          block = Loincloth::Block.new text
+          block = ::Loincloth::Block.new text
           assert_not(block.is_paragraph?)
         end
         

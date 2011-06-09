@@ -1,7 +1,7 @@
 require 'helper'
 
 module Test
-  module LoinclothTests
+  module Loincloth
     module Block
       class ToParagraph < Assertor::Case
         def should_convert_regular_text_to_paragraph
@@ -20,7 +20,7 @@ module Test
         private
         
         def should_convert(source, expectation)
-          block = Loincloth::Block.new source
+          block = ::Loincloth::Block.new source
           block.to_paragraph
           assert_equals(block, expectation)
         end

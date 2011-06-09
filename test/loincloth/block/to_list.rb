@@ -1,7 +1,7 @@
 require 'helper'
 
 module Test
-  module LoinclothTests
+  module Loincloth
     module Block
       class ToList < Assertor::Case
         def should_convert_to_list_a_one_line_list
@@ -20,7 +20,7 @@ module Test
         private
         
         def should_convert(source, expectation)
-          block = Loincloth::Block.new source
+          block = ::Loincloth::Block.new source
           block.to_list
           assert_equals(block, expectation)
         end

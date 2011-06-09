@@ -36,7 +36,7 @@ module Test
         private
         
         def should_split(text, target=BLOCKS)
-          parser = Loincloth::BlockParser.new(StringIO.new(text))
+          parser = ::Loincloth::BlockParser.new(StringIO.new(text))
           blocks = []
           parser.each_block{|block| blocks << block }
           assert_equals blocks, target

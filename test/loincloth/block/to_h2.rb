@@ -1,7 +1,7 @@
 require 'helper'
 
 module Test
-  module LoinclothTests
+  module Loincloth
     module Block
       class ToH2 < Assertor::Case
         def should_return_convert_headers_with_4_minus
@@ -19,7 +19,7 @@ module Test
         private
         
         def should_convert(source, expectation)
-          block = Loincloth::Block.new source
+          block = ::Loincloth::Block.new source
           block.to_h2
           assert_equals(block, expectation)
         end
