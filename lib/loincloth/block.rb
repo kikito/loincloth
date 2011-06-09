@@ -1,4 +1,4 @@
-module Loincloth
+class Loincloth
 
   class Block < String
 

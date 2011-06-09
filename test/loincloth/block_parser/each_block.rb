@@ -39,6 +39,7 @@ module Test
           parser = ::Loincloth::BlockParser.new(StringIO.new(text))
           blocks = []
           parser.each_block{|block| blocks << block }
+          blocks.each{|block| assert(block.is_a? ::Loincloth::Block)}
           assert_equals blocks, target
         end
 

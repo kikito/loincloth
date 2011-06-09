@@ -1,4 +1,4 @@
-module Loincloth
+class Loincloth
   class BlockParser
     def initialize(stream)
       @stream = stream
@@ -25,7 +25,7 @@ module Loincloth
     end
 
     def do_action(action, buffer)
-      action.call(buffer.join("\n")) unless buffer.empty?
+      action.call(Block.new(buffer.join("\n"))) unless buffer.empty?
     end
 
   end

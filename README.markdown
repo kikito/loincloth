@@ -41,17 +41,15 @@ Should produce:
 
 <p>Now is the time for all <em>good</em> men to come to
 the aid of <strong>their</strong> country. This is just a
-regular paragraph</p>.
+regular paragraph.</p>
 
 <ul>
   <li>Get socks</li>
   <li>Get milk</li>
-  <li><a href="http://getfirefox.com">Get firefox</a></li>
+  <li><a href="http://getfirefox.com" title="Get firefox">Get firefox</a></li>
 </ul>
 
-<p>
-  <img src="/images/cat.jpg" alt="my cat playing with a ball" />
-</p>
+<p><img src="/images/cat.jpg" alt="my cat playing with a ball" title="my cat playing with a ball" /></p>
 ```
 
 Other notes:
