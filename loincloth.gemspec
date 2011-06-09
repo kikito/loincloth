@@ -25,6 +25,7 @@ Gem::Specification.new do |s|
     "lib/loincloth.rb",
     "lib/loincloth/block.rb",
     "lib/loincloth/block_parser.rb",
+    "loincloth.gemspec",
     "run_tests.rb",
     "test/helper.rb",
     "test/loincloth/block/emphasize.rb",
